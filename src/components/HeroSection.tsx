@@ -1,7 +1,10 @@
+
 import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
 const HeroSection = () => {
-  return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  return (
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 ninja-gradient">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
@@ -24,9 +27,6 @@ const HeroSection = () => {
             <span className="text-ninja-red block animate-glow">NINJAS</span>
             <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">Club</span>
           </h1>
-
-          {/* Japanese Text */}
-          
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-noto leading-relaxed">
@@ -53,8 +53,8 @@ const HeroSection = () => {
               <div className="text-gray-400 font-noto">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">100+</div>
-              <div className="text-gray-400 font-noto">Students Trained</div>
+              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">70+</div>
+              <div className="text-gray-400 font-noto">Active Students</div>
             </div>
             <div className="text-center">
               <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">3</div>
@@ -70,6 +70,8 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-ninja-red rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default HeroSection;

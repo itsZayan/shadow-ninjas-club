@@ -20,7 +20,7 @@ const TrainingSection = () => {
       icon: Target,
       title: "Weapons Training",
       description: "Traditional weapons mastery including nunchaku, sword, sai, and more",
-      skills: ["Nunchaku", "Katana", "Sai", "Bo Staff", "Chain Whip"]
+      skills: ["Nunchaku", "Katana", "Sai", "Archery", "Chain Whip"]
     },
     {
       icon: Zap,
@@ -97,24 +97,25 @@ const TrainingSection = () => {
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="font-orbitron font-bold text-ninja-red mb-2">MONDAY - WEDNESDAY</div>
+                <div className="font-orbitron font-bold text-ninja-red mb-2">G-13 MAIN DOJO</div>
                 <div className="text-gray-300 font-noto">
-                  <div>Ninjutsu & Weapons</div>
-                  <div className="text-sm text-gray-400">6:00 PM - 8:00 PM</div>
+                  <div>Mon, Wed, Fri</div>
+                  <div className="text-sm text-gray-400">Asr to Maghrib</div>
+                  <div className="text-xs text-ninja-red mt-2">*Friday: Weapons Only</div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="font-orbitron font-bold text-ninja-red mb-2">TUESDAY - THURSDAY</div>
+                <div className="font-orbitron font-bold text-ninja-red mb-2">I-14 BRANCH</div>
                 <div className="text-gray-300 font-noto">
-                  <div>Judo & Grappling</div>
-                  <div className="text-sm text-gray-400">7:00 PM - 9:00 PM</div>
+                  <div>Tue, Thu, Sat</div>
+                  <div className="text-sm text-gray-400">Asr to Maghrib</div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="font-orbitron font-bold text-ninja-red mb-2">SATURDAY</div>
+                <div className="font-orbitron font-bold text-ninja-red mb-2">G-14 BRANCH</div>
                 <div className="text-gray-300 font-noto">
-                  <div>Open Training</div>
-                  <div className="text-sm text-gray-400">10:00 AM - 2:00 PM</div>
+                  <div>Saturday & Sunday</div>
+                  <div className="text-sm text-gray-400">5:00 AM</div>
                 </div>
               </div>
             </div>

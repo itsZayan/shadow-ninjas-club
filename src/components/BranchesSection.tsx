@@ -5,43 +5,45 @@ import { Card, CardContent } from '@/components/ui/card';
 const BranchesSection = () => {
   const branches = [
     {
-      name: "G-13 Dojo",
+      name: "G-13 Main Dojo",
       location: "G-13 Sector, Islamabad",
       address: "Street 15, G-13/1, Islamabad",
-      phone: "+92 300 1234567",
+      phone: "+92 310 1870059",
       schedule: [
-        { day: "Mon-Wed-Fri", time: "6:00 PM - 8:00 PM", type: "Ninjutsu & Weapons" },
-        { day: "Tue-Thu", time: "7:00 PM - 9:00 PM", type: "Judo & Combat" },
-        { day: "Saturday", time: "10:00 AM - 2:00 PM", type: "Open Training" }
+        { day: "Monday", time: "Asr to Maghrib", type: "General Training + Judo" },
+        { day: "Wednesday", time: "Asr to Maghrib", type: "Kicks, Fights + Judo" },
+        { day: "Friday", time: "Asr to Maghrib", type: "Weapons Training Only" }
       ],
-      capacity: "50 Students",
-      features: ["Traditional Dojo", "Weapons Arsenal", "Meditation Room"]
+      capacity: "45 Active Students",
+      features: ["Main Branch", "Traditional Dojo", "Weapons Arsenal", "Meditation Room"],
+      mapLink: "https://maps.app.goo.gl/VM6DF2SzjjhV4J4R7"
     },
     {
       name: "I-14 Training Center",
       location: "I-14 Sector, Islamabad",
       address: "Main Boulevard, I-14/2, Islamabad",
-      phone: "+92 301 2345678",
+      phone: "+92 310 1870059",
       schedule: [
-        { day: "Mon-Wed-Fri", time: "5:30 PM - 7:30 PM", type: "Youth Classes" },
-        { day: "Tue-Thu", time: "8:00 PM - 10:00 PM", type: "Advanced Training" },
-        { day: "Saturday", time: "9:00 AM - 1:00 PM", type: "All Levels" }
+        { day: "Tuesday", time: "Asr to Maghrib", type: "General Training" },
+        { day: "Thursday", time: "Asr to Maghrib", type: "General Training" },
+        { day: "Saturday", time: "Asr to Maghrib", type: "General Training" }
       ],
-      capacity: "40 Students",
-      features: ["Modern Facility", "Youth Programs", "Family Classes"]
+      capacity: "20 Active Students",
+      features: ["Modern Facility", "Youth Programs", "Family Classes"],
+      mapLink: "https://maps.app.goo.gl/YYiKH6b83JY7V2vQ7"
     },
     {
       name: "G-14 Elite Academy",
       location: "G-14 Sector, Islamabad",
       address: "Commercial Area, G-14/4, Islamabad",
-      phone: "+92 302 3456789",
+      phone: "+92 310 1870059",
       schedule: [
-        { day: "Daily", time: "6:00 AM - 8:00 AM", type: "Morning Warriors" },
-        { day: "Mon-Fri", time: "6:00 PM - 8:00 PM", type: "Evening Classes" },
-        { day: "Weekend", time: "2:00 PM - 6:00 PM", type: "Intensive Training" }
+        { day: "Saturday", time: "5:00 AM", type: "Morning Training" },
+        { day: "Sunday", time: "5:00 AM", type: "Morning Training" }
       ],
-      capacity: "60 Students",
-      features: ["Elite Training", "Competition Prep", "Master Classes"]
+      capacity: "5 Active Students",
+      features: ["Elite Training", "Early Morning Sessions", "Advanced Programs"],
+      mapLink: "https://maps.app.goo.gl/CCgf8B4Vv5V6B2S7A"
     }
   ];
 
@@ -134,7 +136,10 @@ const BranchesSection = () => {
 
                 {/* CTA */}
                 <div className="mt-6 pt-6 border-t border-ninja-red/20">
-                  <button className="w-full bg-ninja-red/20 hover:bg-ninja-red/30 text-white font-orbitron font-bold py-3 px-4 rounded-lg transition-colors duration-300 border border-ninja-red/30">
+                  <button 
+                    onClick={() => window.open(branch.mapLink, '_blank')}
+                    className="w-full bg-ninja-red/20 hover:bg-ninja-red/30 text-white font-orbitron font-bold py-3 px-4 rounded-lg transition-colors duration-300 border border-ninja-red/30"
+                  >
                     VISIT THIS BRANCH
                   </button>
                 </div>
@@ -143,22 +148,23 @@ const BranchesSection = () => {
           ))}
         </div>
 
-        {/* Contact Info */}
+        {/* Championships Section */}
         <div className="mt-16 text-center">
           <Card className="bg-card/30 backdrop-blur border-ninja-red/20 max-w-4xl mx-auto">
             <CardContent className="p-8">
               <h3 className="font-orbitron font-bold text-2xl text-white mb-4">
-                READY TO BEGIN YOUR NINJA JOURNEY?
+                CHAMPIONSHIPS & COMPETITIONS
               </h3>
               <p className="text-gray-300 font-noto mb-6">
-                Visit any of our branches for a free trial class. Experience the way of the shadow warrior.
+                Participate in local and national martial arts championships. Test your skills 
+                against other warriors and bring honor to Shadow Strike Dojo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="red-gradient hover:scale-105 transition-transform duration-300 px-8 py-3 rounded-lg font-orbitron font-bold text-white">
-                  BOOK FREE TRIAL
+                  VIEW CHAMPIONSHIPS
                 </button>
                 <button className="border border-ninja-red/50 text-white hover:bg-ninja-red/10 px-8 py-3 rounded-lg font-noto transition-colors duration-300">
-                  Call for Info
+                  Competition Calendar
                 </button>
               </div>
             </CardContent>

@@ -28,7 +28,6 @@ const Header = () => {
               <h1 className="font-orbitron font-bold text-xl text-white">
                 SHADOW STRIKE
               </h1>
-              <p className="text-ninja-red text-xs font-noto">忍者道場</p>
             </div>
           </div>
 

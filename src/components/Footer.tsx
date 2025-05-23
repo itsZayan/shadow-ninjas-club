@@ -17,7 +17,6 @@ const Footer = () => {
                 <h3 className="font-orbitron font-bold text-xl text-white">
                   SHADOW STRIKE DOJO
                 </h3>
-                <p className="text-ninja-red text-sm font-noto">影の一撃道場</p>
               </div>
             </div>
             <p className="text-gray-400 font-noto mb-4 max-w-md">
@@ -48,7 +47,7 @@ const Footer = () => {
             <div className="space-y-3 text-gray-400 font-noto">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-ninja-red" />
-                <span>+92 300 1234567</span>
+                <span>+92 310 1870059</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-ninja-red" />
