@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Menu, X, Sword } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
@@ -14,6 +14,10 @@ const Header = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  const handleJoinNow = () => {
+    window.open('https://wa.me/923101870059', '_blank');
+  };
+
   return (
     <header className="fixed top-0 w-full z-50 ninja-gradient backdrop-blur-md border-b border-ninja-red/20">
       <div className="container mx-auto px-4 py-4">
@@ -21,12 +25,18 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <Sword className="w-8 h-8 text-ninja-red rotate-45" />
-              <div className="absolute inset-0 w-8 h-8 bg-ninja-red/20 blur-md rounded-full"></div>
+              <div className="w-12 h-12 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red">
+                <img 
+                  src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
+                  alt="Shadow Ninja Academy Logo" 
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
+              <div className="absolute inset-0 w-12 h-12 bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>
             </div>
             <div>
               <h1 className="font-orbitron font-bold text-xl text-white">
-                SHADOW STRIKE
+                SHADOW NINJA ACADEMY
               </h1>
             </div>
           </div>
@@ -43,7 +53,10 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <Button className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold">
+            <Button 
+              onClick={handleJoinNow}
+              className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
+            >
               JOIN NOW
             </Button>
           </nav>
@@ -71,7 +84,10 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
-              <Button className="red-gradient mt-4 font-orbitron font-bold">
+              <Button 
+                onClick={handleJoinNow}
+                className="red-gradient mt-4 font-orbitron font-bold"
+              >
                 JOIN NOW
               </Button>
             </div>

@@ -1,5 +1,5 @@
 
-import { Sword, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -10,12 +10,18 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <div className="relative">
-                <Sword className="w-8 h-8 text-ninja-red rotate-45" />
+                <div className="w-8 h-8 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red">
+                  <img 
+                    src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
+                    alt="Shadow Ninja Academy Logo" 
+                    className="w-6 h-6 object-contain"
+                  />
+                </div>
                 <div className="absolute inset-0 w-8 h-8 bg-ninja-red/20 blur-md rounded-full"></div>
               </div>
               <div>
                 <h3 className="font-orbitron font-bold text-xl text-white">
-                  SHADOW STRIKE DOJO
+                  SHADOW NINJA ACADEMY
                 </h3>
               </div>
             </div>
@@ -51,7 +57,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-ninja-red" />
-                <span>info@shadowstrikedojo.com</span>
+                <span>shadowartacademy@gmail.com</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-ninja-red mt-1" />
@@ -67,7 +73,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-ninja-red/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 font-noto text-sm mb-4 md:mb-0">
-            © 2024 Shadow Strike Dojo. All rights reserved. | A branch of F.S Ninja Academy
+            © 2024 Shadow Ninja Academy. All rights reserved. | A branch of F.S Ninja Academy
           </div>
           <div className="flex space-x-6 text-gray-400 font-noto text-sm">
             <a href="#" className="hover:text-ninja-red transition-colors duration-300">Privacy Policy</a>
