@@ -29,7 +29,7 @@ const Header = () => {
                 <img 
                   src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
                   alt="Shadow Ninja Academy Logo" 
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain" 
                 />
               </div>
               <div className="absolute inset-0 w-12 h-12 bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>

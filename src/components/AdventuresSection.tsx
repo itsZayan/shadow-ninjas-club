@@ -1,5 +1,5 @@
 
-import { Mountain, Sun, Compass, Camera } from 'lucide-react';
+import { Mountain, Sun, Compass, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AdventuresSection = () => {
@@ -26,18 +26,18 @@ const AdventuresSection = () => {
       season: "December - February"
     },
     {
-      icon: Camera,
-      title: "Cultural Journeys",
-      description: "Explore Japanese culture and martial arts history",
-      features: ["Temple Visits", "Traditional Arts", "Cultural Learning", "Photography"],
-      season: "Spring & Fall"
+      icon: Award,
+      title: "Championships",
+      description: "Compete and showcase your skills in local and national tournaments",
+      features: ["Competition Training", "Medal Events", "Skill Exhibition", "Team Competitions"],
+      season: "Seasonal Events"
     }
   ];
 
   return (
     <section id="adventures" className="py-20 bg-gradient-to-b from-background to-ninja-gray">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="font-orbitron font-black text-4xl md:text-6xl text-white mb-6">
             NINJA <span className="text-ninja-red">ADVENTURES</span>
           </h2>
@@ -82,39 +82,8 @@ const AdventuresSection = () => {
           ))}
         </div>
 
-        {/* Adventure Highlights */}
+        {/* Adventure Benefits */}
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-card/30 backdrop-blur border-ninja-red/20">
-            <CardContent className="p-8">
-              <h3 className="font-orbitron font-bold text-2xl text-white mb-4">
-                UPCOMING ADVENTURES
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center border-b border-ninja-red/20 pb-2">
-                  <div>
-                    <div className="text-white font-noto">Summer Ninja Camp 2024</div>
-                    <div className="text-ninja-red text-sm">July 15-22</div>
-                  </div>
-                  <div className="text-gray-400 text-sm">8 Days</div>
-                </div>
-                <div className="flex justify-between items-center border-b border-ninja-red/20 pb-2">
-                  <div>
-                    <div className="text-white font-noto">Mountain Hiking Expedition</div>
-                    <div className="text-ninja-red text-sm">June 8-9</div>
-                  </div>
-                  <div className="text-gray-400 text-sm">2 Days</div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <div className="text-white font-noto">Cultural Temple Tour</div>
-                    <div className="text-ninja-red text-sm">May 25</div>
-                  </div>
-                  <div className="text-gray-400 text-sm">1 Day</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           <Card className="bg-card/30 backdrop-blur border-ninja-red/20">
             <CardContent className="p-8">
               <h3 className="font-orbitron font-bold text-2xl text-white mb-4">
@@ -143,6 +112,40 @@ const AdventuresSection = () => {
                   <div className="w-2 h-2 bg-ninja-red rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <strong className="text-white">Lifelong Memories:</strong> Create bonds and experiences that last forever
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/30 backdrop-blur border-ninja-red/20">
+            <CardContent className="p-8">
+              <h3 className="font-orbitron font-bold text-2xl text-white mb-4">
+                TRAINING EQUIPMENT
+              </h3>
+              <div className="space-y-4 text-gray-300 font-noto">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-ninja-red rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-white">Ninja Uniform:</strong> 3,000 PKR
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-ninja-red rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-white">Judo Uniform:</strong> 3,000 - 5,000 PKR
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-ninja-red rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-white">Training Weapons:</strong> Available for purchase at the dojo
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-ninja-red rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <strong className="text-white">Safety Gear:</strong> Required for sparring and competition
                   </div>
                 </div>
               </div>
