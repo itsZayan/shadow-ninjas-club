@@ -25,11 +25,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <div className="w-12 h-12 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red">
+              <div className="w-12 h-12 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
                 <img 
                   src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
                   alt="Shadow Ninja Academy Logo" 
-                  className="w-10 h-10 object-contain" 
+                  className="w-full h-full object-cover rounded-full" 
                 />
               </div>
               <div className="absolute inset-0 w-12 h-12 bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>
