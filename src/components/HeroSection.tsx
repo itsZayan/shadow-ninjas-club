@@ -49,11 +49,11 @@ const HeroSection = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">15+</div>
+              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">9+</div>
               <div className="text-gray-400 font-noto">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">500+</div>
+              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">100+</div>
               <div className="text-gray-400 font-noto">Students Trained</div>
             </div>
             <div className="text-center">
