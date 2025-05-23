@@ -1,10 +1,7 @@
-
 import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const HeroSection = () => {
-  return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+  return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 ninja-gradient">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
@@ -24,14 +21,12 @@ const HeroSection = () => {
           {/* Main Headline */}
           <h1 className="font-orbitron font-black text-4xl md:text-7xl lg:text-8xl text-white mb-6 text-shadow">
             <span className="block">SHADOW</span>
-            <span className="text-ninja-red block animate-glow">STRIKE</span>
-            <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">DOJO</span>
+            <span className="text-ninja-red block animate-glow">NINJAS</span>
+            <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">Club</span>
           </h1>
 
           {/* Japanese Text */}
-          <div className="font-noto text-lg md:text-xl text-gray-300 mb-4">
-            影の一撃道場
-          </div>
+          
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-noto leading-relaxed">
@@ -75,8 +70,6 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-ninja-red rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
