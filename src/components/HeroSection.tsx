@@ -4,11 +4,9 @@ import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { User as SupabaseUser } from '@supabase/supabase-js';
-import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
   const [user, setUser] = useState<SupabaseUser | null>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     // Get current session
@@ -24,12 +22,8 @@ const HeroSection = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleStartJourney = () => {
-    if (user) {
-      window.open('https://wa.me/923101870059', '_blank');
-    } else {
-      navigate('/auth');
-    }
+  const handleJoinNow = () => {
+    window.open('https://wa.me/923101870059', '_blank');
   };
 
   const handleWatchVideos = () => {
@@ -70,8 +64,8 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={handleStartJourney} className="red-gradient hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-orbitron font-bold group">
-              {user ? 'CONTACT US NOW' : 'START YOUR JOURNEY'}
+            <Button onClick={handleJoinNow} className="red-gradient hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-orbitron font-bold group">
+              JOIN NOW
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button onClick={handleWatchVideos} variant="outline" className="border-ninja-red/50 text-white hover:bg-ninja-red/10 px-8 py-6 text-lg font-noto">

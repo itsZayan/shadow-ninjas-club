@@ -4,12 +4,10 @@ import { Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { User as SupabaseUser } from '@supabase/supabase-js';
-import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
-  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', href: '#hero' },
@@ -33,12 +31,8 @@ const Header = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleAuthAction = () => {
-    if (user) {
-      window.open('https://wa.me/923101870059', '_blank');
-    } else {
-      navigate('/auth');
-    }
+  const handleJoinNow = () => {
+    window.open('https://wa.me/923101870059', '_blank');
   };
 
   const handleSignOut = async () => {
@@ -88,6 +82,12 @@ const Header = () => {
                   <span className="font-noto text-sm">{user.email}</span>
                 </div>
                 <Button 
+                  onClick={handleJoinNow}
+                  className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold mr-2"
+                >
+                  JOIN NOW
+                </Button>
+                <Button 
                   onClick={handleSignOut}
                   variant="outline"
                   className="border-ninja-red/50 text-white hover:bg-ninja-red/10 font-noto"
@@ -96,14 +96,7 @@ const Header = () => {
                   Sign Out
                 </Button>
               </div>
-            ) : (
-              <Button 
-                onClick={handleAuthAction}
-                className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
-              >
-                SIGN IN
-              </Button>
-            )}
+            ) : null}
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -137,6 +130,12 @@ const Header = () => {
                     <span className="font-noto text-sm">{user.email}</span>
                   </div>
                   <Button 
+                    onClick={handleJoinNow}
+                    className="red-gradient w-full font-orbitron font-bold"
+                  >
+                    JOIN NOW
+                  </Button>
+                  <Button 
                     onClick={handleSignOut}
                     variant="outline"
                     className="border-ninja-red/50 text-white hover:bg-ninja-red/10 w-full font-noto"
@@ -145,14 +144,7 @@ const Header = () => {
                     Sign Out
                   </Button>
                 </div>
-              ) : (
-                <Button 
-                  onClick={handleAuthAction}
-                  className="red-gradient mt-4 font-orbitron font-bold"
-                >
-                  SIGN IN
-                </Button>
-              )}
+              ) : null}
             </div>
           </nav>
         )}
