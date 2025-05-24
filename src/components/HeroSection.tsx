@@ -1,18 +1,13 @@
-
 import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
 const HeroSection = () => {
   const handleStartJourney = () => {
     window.open('https://wa.me/923101870059', '_blank');
   };
-
   const handleWatchVideos = () => {
     window.open('https://www.youtube.com/@ShadowNinjasClub', '_blank');
   };
-
-  return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden animate-fade-in">
+  return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden animate-fade-in">
       {/* Background */}
       <div className="absolute inset-0 ninja-gradient">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.1),transparent_70%)]"></div>
@@ -33,7 +28,7 @@ const HeroSection = () => {
           <h1 className="font-orbitron font-black text-4xl md:text-7xl lg:text-8xl text-white mb-6 text-shadow">
             <span className="block">SHADOW</span>
             <span className="text-ninja-red block animate-glow">NINJAS</span>
-            <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">Academy</span>
+            <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">Club</span>
           </h1>
 
           {/* Subtitle */}
@@ -45,18 +40,11 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              onClick={handleStartJourney}
-              className="red-gradient hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-orbitron font-bold group"
-            >
+            <Button onClick={handleStartJourney} className="red-gradient hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-orbitron font-bold group">
               START YOUR JOURNEY
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button 
-              onClick={handleWatchVideos}
-              variant="outline" 
-              className="border-ninja-red/50 text-white hover:bg-ninja-red/10 px-8 py-6 text-lg font-noto"
-            >
+            <Button onClick={handleWatchVideos} variant="outline" className="border-ninja-red/50 text-white hover:bg-ninja-red/10 px-8 py-6 text-lg font-noto">
               Watch Training Videos
             </Button>
           </div>
@@ -85,8 +73,6 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-ninja-red rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
