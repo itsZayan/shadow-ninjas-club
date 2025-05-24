@@ -1,10 +1,15 @@
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/integrations/supabase/client';
+import { User as SupabaseUser } from '@supabase/supabase-js';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const navigate = useNavigate();
 
   const navItems = [
     { name: 'Home', href: '#hero' },
@@ -14,8 +19,30 @@ const Header = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
+  useEffect(() => {
+    // Get current session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   const handleJoinNow = () => {
-    window.open('https://wa.me/923101870059', '_blank');
+    if (user) {
+      window.open('https://wa.me/923101870059', '_blank');
+    } else {
+      navigate('/auth');
+    }
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
   };
 
   return (
@@ -53,12 +80,30 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-            <Button 
-              onClick={handleJoinNow}
-              className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
-            >
-              JOIN NOW
-            </Button>
+            
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 text-white">
+                  <User className="w-4 h-4" />
+                  <span className="font-noto text-sm">{user.email}</span>
+                </div>
+                <Button 
+                  onClick={handleSignOut}
+                  variant="outline"
+                  className="border-ninja-red/50 text-white hover:bg-ninja-red/10 font-noto"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                onClick={handleJoinNow}
+                className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
+              >
+                JOIN NOW
+              </Button>
+            )}
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -84,12 +129,30 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
-              <Button 
-                onClick={handleJoinNow}
-                className="red-gradient mt-4 font-orbitron font-bold"
-              >
-                JOIN NOW
-              </Button>
+              
+              {user ? (
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 text-white">
+                    <User className="w-4 h-4" />
+                    <span className="font-noto text-sm">{user.email}</span>
+                  </div>
+                  <Button 
+                    onClick={handleSignOut}
+                    variant="outline"
+                    className="border-ninja-red/50 text-white hover:bg-ninja-red/10 w-full font-noto"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Button 
+                  onClick={handleJoinNow}
+                  className="red-gradient mt-4 font-orbitron font-bold"
+                >
+                  JOIN NOW
+                </Button>
+              )}
             </div>
           </nav>
         )}
