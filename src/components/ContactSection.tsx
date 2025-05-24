@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -15,19 +16,36 @@ const ContactSection = () => {
     branch: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `New Inquiry from ${formData.firstName} ${formData.lastName}`;
-    const body = `
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Preferred Branch: ${formData.branch}
-Message: ${formData.message}
-    `;
-    const mailtoLink = `mailto:shadowartacademy@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        branch: '',
+        message: ''
+      });
+
+      alert('Message sent successfully!');
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Error sending message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -144,8 +162,12 @@ Message: ${formData.message}
                   />
                 </div>
                 
-                <Button type="submit" className="w-full red-gradient hover:scale-105 transition-all duration-300 py-3 font-orbitron font-bold text-lg group">
-                  SEND MESSAGE
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full red-gradient hover:scale-105 transition-all duration-300 py-3 font-orbitron font-bold text-lg group"
+                >
+                  {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                   <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>

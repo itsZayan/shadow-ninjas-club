@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, User, LogOut } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { User as SupabaseUser } from '@supabase/supabase-js';
@@ -49,7 +49,7 @@ const Header = () => {
               <div className="w-full h-full rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
                 <img 
                   src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
-                  alt="Shadow Ninja Academy Logo" 
+                  alt="Shadow Ninjas Club Logo" 
                   className="w-full h-full object-cover rounded-full" 
                 />
               </div>
@@ -57,7 +57,7 @@ const Header = () => {
             </div>
             <div>
               <h1 className="font-orbitron font-bold text-xl text-white">
-                SHADOW NINJA ACADEMY
+                SHADOW NINJAS CLUB
               </h1>
             </div>
           </div>
@@ -77,23 +77,19 @@ const Header = () => {
             
             {user ? (
               <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2 text-white">
-                  <User className="w-4 h-4" />
-                  <span className="font-noto text-sm">{user.email}</span>
-                </div>
                 <Button 
                   onClick={handleJoinNow}
-                  className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold mr-2"
+                  className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
                 >
                   JOIN NOW
                 </Button>
                 <Button 
                   onClick={handleSignOut}
                   variant="outline"
-                  className="border-ninja-red/50 text-white hover:bg-ninja-red/10 font-noto"
+                  size="icon"
+                  className="border-ninja-red/50 text-white hover:bg-ninja-red/10"
                 >
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Sign Out
+                  <LogOut className="w-4 h-4" />
                 </Button>
               </div>
             ) : null}
@@ -125,10 +121,6 @@ const Header = () => {
               
               {user ? (
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-2 text-white">
-                    <User className="w-4 h-4" />
-                    <span className="font-noto text-sm">{user.email}</span>
-                  </div>
                   <Button 
                     onClick={handleJoinNow}
                     className="red-gradient w-full font-orbitron font-bold"

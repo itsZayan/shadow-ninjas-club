@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import { Eye, EyeOff, Zap, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -17,6 +19,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
     const checkUser = async () => {
       const {
@@ -30,6 +33,7 @@ const Auth = () => {
     };
     checkUser();
   }, [navigate]);
+
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -64,7 +68,9 @@ const Auth = () => {
       setLoading(false);
     }
   };
-  return <div className="min-h-screen ninja-gradient flex items-center justify-center p-4 relative overflow-hidden">
+
+  return (
+    <div className="min-h-screen ninja-gradient flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-2 h-2 bg-ninja-red rounded-full animate-pulse"></div>
@@ -84,13 +90,13 @@ const Auth = () => {
           <div className="flex justify-center mb-4">
             <div className="relative">
               <div className="w-16 h-16 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
-                <img src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" alt="Shadow Ninja Academy Logo" className="w-full h-full object-cover rounded-full" />
+                <img src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" alt="Shadow Ninjas Club Logo" className="w-full h-full object-cover rounded-full" />
               </div>
               <div className="absolute inset-0 w-16 h-16 bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>
             </div>
           </div>
           <CardTitle className="font-orbitron text-2xl text-white mb-2">
-            {isLogin ? 'WELCOME BACK' : 'JOIN THE ACADEMY'}
+            {isLogin ? 'WELCOME BACK' : 'JOIN THE CLUB'}
           </CardTitle>
           <div className="inline-flex items-center px-3 py-1 rounded-full border border-ninja-red/30 bg-ninja-red/10">
             <Zap className="w-4 h-4 text-ninja-red mr-2" />
@@ -125,7 +131,7 @@ const Auth = () => {
               </div>}
 
             <Button type="submit" disabled={loading} className="w-full red-gradient hover:scale-105 transition-all duration-300 font-orbitron font-bold py-6 text-lg">
-              {loading ? 'PROCESSING...' : isLogin ? 'ENTER THE ACADEMY' : 'BEGIN YOUR JOURNEY'}
+              {loading ? 'PROCESSING...' : isLogin ? 'ENTER THE CLUB' : 'BEGIN YOUR JOURNEY'}
             </Button>
           </form>
 
@@ -136,6 +142,8 @@ const Auth = () => {
           </div>
         </CardContent>
       </Card>
-    </div>;
+    </div>
+  );
 };
+
 export default Auth;
