@@ -33,7 +33,7 @@ const Header = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleJoinNow = () => {
+  const handleAuthAction = () => {
     if (user) {
       window.open('https://wa.me/923101870059', '_blank');
     } else {
@@ -51,15 +51,15 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="relative">
-              <div className="w-12 h-12 rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
+            <div className="relative w-12 h-12">
+              <div className="w-full h-full rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
                 <img 
                   src="/lovable-uploads/137df916-66da-4fb4-a42e-fc127d86e766.png" 
                   alt="Shadow Ninja Academy Logo" 
                   className="w-full h-full object-cover rounded-full" 
                 />
               </div>
-              <div className="absolute inset-0 w-12 h-12 bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>
+              <div className="absolute inset-0 w-full h-full bg-ninja-red/20 blur-md rounded-full animate-pulse"></div>
             </div>
             <div>
               <h1 className="font-orbitron font-bold text-xl text-white">
@@ -98,10 +98,10 @@ const Header = () => {
               </div>
             ) : (
               <Button 
-                onClick={handleJoinNow}
+                onClick={handleAuthAction}
                 className="red-gradient hover:scale-105 transition-transform duration-300 font-orbitron font-bold"
               >
-                JOIN NOW
+                SIGN IN
               </Button>
             )}
           </nav>
@@ -147,10 +147,10 @@ const Header = () => {
                 </div>
               ) : (
                 <Button 
-                  onClick={handleJoinNow}
+                  onClick={handleAuthAction}
                   className="red-gradient mt-4 font-orbitron font-bold"
                 >
-                  JOIN NOW
+                  SIGN IN
                 </Button>
               )}
             </div>
