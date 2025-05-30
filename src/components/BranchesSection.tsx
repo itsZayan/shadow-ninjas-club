@@ -1,4 +1,3 @@
-
 import { MapPin, Clock, Phone } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -6,30 +5,39 @@ const BranchesSection = () => {
   const branches = [
     {
       id: 1,
-      name: "Main Dojo - Karachi",
-      address: "Defense Housing Authority, Karachi",
-      timing: "Mon-Fri: 6:00 PM - 9:00 PM\nSat-Sun: 4:00 PM - 8:00 PM",
+      name: "G-13 Branch",
+      address: "G-13/2 park front of mughal market",
+      timing: "Monday, Wednesday, Friday\nAsr to Maghrib",
       phone: "+92 310 1870059",
-      instructor: "Master Sensei",
+      instructor: "",
       specialties: ["Ninjutsu", "Judo", "Weapons Training"]
     },
     {
       id: 2,
-      name: "North Branch - Lahore",
-      address: "Model Town, Lahore",
-      timing: "Mon-Fri: 7:00 PM - 10:00 PM\nSat-Sun: 5:00 PM - 9:00 PM",
+      name: "I-14 Branch",
+      address: "I-14",
+      timing: "Tuesday, Thursday, Saturday\nAsr to Maghrib",
       phone: "+92 310 1870059",
-      instructor: "Sensei Ahmad",
+      instructor: "",
       specialties: ["Traditional Martial Arts", "Self Defense"]
     },
     {
       id: 3,
-      name: "Youth Center - Islamabad",
-      address: "F-7 Sector, Islamabad",
-      timing: "Mon-Fri: 5:30 PM - 8:30 PM\nSat-Sun: 3:00 PM - 7:00 PM",
+      name: "G-14 Branch",
+      address: "G-14 Park",
+      timing: "Saturday and Sunday\n5:00 AM",
       phone: "+92 310 1870059",
-      instructor: "Sensei Fatima",
+      instructor: "",
       specialties: ["Kids Training", "Basic Ninjutsu"]
+    },
+    {
+      id: 4,
+      name: "D-12 Branch",
+      address: "D-12",
+      timing: "Monday, Tuesday, Saturday\nAsr to Maghrib",
+      phone: "+92 310 1870059",
+      instructor: "",
+      specialties: ["Ninjutsu", "Self Defense", "Weapons Training"]
     }
   ];
 
@@ -55,13 +63,13 @@ const BranchesSection = () => {
           </h2>
           
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-noto">
-            Train at any of our world-class facilities across Pakistan. Each branch is equipped with 
+            Train at any of our world-class facilities across Islamabad. Each branch is equipped with 
             traditional and modern training equipment for the ultimate ninja experience.
           </p>
         </div>
 
         {/* Branches Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {branches.map((branch) => (
             <Card key={branch.id} className="bg-ninja-dark/90 border-ninja-red/30 backdrop-blur-md hover:border-ninja-red/50 transition-all duration-300 group">
               <CardHeader>
@@ -95,13 +103,8 @@ const BranchesSection = () => {
                   </a>
                 </div>
 
-                {/* Instructor */}
-                <div className="pt-2 border-t border-ninja-red/20">
-                  <p className="text-white font-orbitron font-bold">{branch.instructor}</p>
-                </div>
-
                 {/* Specialties */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {branch.specialties.map((specialty, index) => (
                     <span
                       key={index}

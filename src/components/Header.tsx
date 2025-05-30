@@ -1,20 +1,22 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { User as SupabaseUser } from '@supabase/supabase-js';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navItems = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Training', href: '#training' },
-    { name: 'Adventures', href: '#adventures' },
-    { name: 'Branches', href: '#branches' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: isHomePage ? '#hero' : '/' },
+    { name: 'Training', href: isHomePage ? '#training' : '/#training' },
+    { name: 'Adventures', href: isHomePage ? '#adventures' : '/#adventures' },
+    { name: 'Branches', href: isHomePage ? '#branches' : '/#branches' },
+    { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' }
   ];
 
   useEffect(() => {
@@ -39,12 +41,49 @@ const Header = () => {
     await supabase.auth.signOut();
   };
 
+  const renderNavLink = (item: { name: string; href: string }) => {
+    if (item.href.startsWith('#')) {
+      return (
+        <a
+          key={item.name}
+          href={item.href}
+          className="text-white hover:text-ninja-red transition-colors duration-300 font-noto font-medium relative group"
+        >
+          {item.name}
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      );
+    } else if (item.href.startsWith('/#')) {
+      return (
+        <Link
+          key={item.name}
+          to={item.href}
+          className="text-white hover:text-ninja-red transition-colors duration-300 font-noto font-medium relative group"
+        >
+          {item.name}
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
+        </Link>
+      );
+    } else {
+      return (
+        <Link
+          key={item.name}
+          to={item.href}
+          className="text-white hover:text-ninja-red transition-colors duration-300 font-noto font-medium relative group"
+        >
+          {item.name}
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
+        </Link>
+      );
+    }
+  };
+
   return (
     <header className="fixed top-0 w-full z-50 ninja-gradient backdrop-blur-md border-b border-ninja-red/20">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <div className="relative w-12 h-12">
               <div className="w-full h-full rounded-full border-2 border-ninja-red bg-ninja-dark flex items-center justify-center shadow-lg glow-red overflow-hidden">
                 <img 
@@ -60,20 +99,11 @@ const Header = () => {
                 SHADOW NINJAS CLUB
               </h1>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-white hover:text-ninja-red transition-colors duration-300 font-noto font-medium relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ninja-red transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
+            {navItems.map((item) => renderNavLink(item))}
             
             {user ? (
               <div className="flex items-center space-x-4">
@@ -109,14 +139,25 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4 border-t border-ninja-red/20">
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-white hover:text-ninja-red transition-colors duration-300 font-noto"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
+                item.href.startsWith('#') ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="text-white hover:text-ninja-red transition-colors duration-300 font-noto"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="text-white hover:text-ninja-red transition-colors duration-300 font-noto"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               
               {user ? (

@@ -1,5 +1,5 @@
-
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -31,7 +31,7 @@ const Footer = () => {
             </p>
             <div className="text-gray-400 font-noto text-sm">
               <p className="mb-1">Part of <span className="text-ninja-red">F.S Ninja Academy</span></p>
-              <p>Training warriors since 2009</p>
+              <p>Training warriors since 2023</p>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 text-ninja-red mt-1" />
                 <div>
-                  <div>G-13, I-14, G-14</div>
+                  <div>G-13, I-14, G-14, D-12</div>
                   <div>Islamabad, Pakistan</div>
                 </div>
               </div>
@@ -73,11 +73,11 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-ninja-red/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 font-noto text-sm mb-4 md:mb-0">
-            © 2024 Shadow Ninjas Club. All rights reserved. | A branch of F.S Ninja Academy
+            © 2025 Shadow Ninjas Club. All rights reserved. | A branch of F.S Ninja Academy
           </div>
           <div className="flex space-x-6 text-gray-400 font-noto text-sm">
-            <a href="#" className="hover:text-ninja-red transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="hover:text-ninja-red transition-colors duration-300">Terms of Service</a>
+            <Link to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">Privacy Policy</Link>
+            <Link to="/terms-of-service" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">Terms of Service</Link>
             <a href="https://pakninjas.com/about-fs-ninja-academy/" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">
               F.S Ninja Academy
             </a>

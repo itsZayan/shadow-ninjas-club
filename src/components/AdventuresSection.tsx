@@ -1,4 +1,3 @@
-
 import { Mountain, Sun, Compass, Award } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -13,9 +12,9 @@ const AdventuresSection = () => {
     },
     {
       icon: Sun,
-      title: "Summer Training Camps",
-      description: "Intensive outdoor training combining martial arts with adventure",
-      features: ["Intensive Training", "Outdoor Skills", "Combat Drills", "Friendship Building"],
+      title: "Summer Camp",
+      description: "Fun outdoor activities combining adventure and recreation",
+      features: ["Chill Camp Adventure", "Outdoor Activities", "Friendship Building", "Fun Games"],
       season: "June - August"
     },
     {
