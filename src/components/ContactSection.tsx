@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, MessageCircle, Send } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/components/ui/use-toast';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -17,32 +17,65 @@ const ContactSection = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: formData
+      // Prepare form data for web3forms
+      const formPayload = {
+        access_key: "011cc4dd-d4cb-4348-9df5-3fa66cae5159",
+        subject: "New Contact Form Submission - Shadow Ninjas Club",
+        from_name: "Shadow Ninjas Club Website",
+        reply_to: formData.email,
+        to_email: "mughal.zayan@gmail.com,shadowartacademy@gmail.com", // Send to both emails
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        branch: formData.branch,
+        message: formData.message,
+      };
+
+      // Send form data to web3forms API
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formPayload),
       });
 
-      if (error) throw error;
+      const data = await response.json();
 
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        branch: '',
-        message: ''
-      });
+      if (data.success) {
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          branch: '',
+          message: ''
+        });
 
-      alert('Message sent successfully!');
+        toast({
+          title: "Message sent successfully!",
+          description: "We'll get back to you as soon as possible.",
+          variant: "default",
+        });
+      } else {
+        throw new Error(data.message || "Something went wrong");
+      }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('Error sending message. Please try again.');
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
