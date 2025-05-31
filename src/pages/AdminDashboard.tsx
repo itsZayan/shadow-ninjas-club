@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, MapPin, DollarSign, LogOut, Plus, Trash, Edit, Save, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -41,33 +41,6 @@ interface Fee {
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-
-  // Verify localStorage works correctly on Vercel
-  useEffect(() => {
-    try {
-      // Verify that localStorage is accessible
-      const testValue = 'verify-' + Date.now();
-      localStorage.setItem('admin-storage-test', testValue);
-      const retrievedValue = localStorage.getItem('admin-storage-test');
-      
-      if (retrievedValue !== testValue) {
-        toast({
-          title: "Storage Warning",
-          description: "Your browser storage may not be working correctly. Changes might not be saved.",
-          variant: "destructive",
-        });
-      } else {
-        localStorage.removeItem('admin-storage-test');
-      }
-    } catch (error) {
-      console.error("localStorage error:", error);
-      toast({
-        title: "Storage Error",
-        description: "Cannot access browser storage. Admin functionality may be limited.",
-        variant: "destructive",
-      });
-    }
-  }, [toast]);
 
   // Event management
   const [events, setEvents] = useState<Event[]>(() => {

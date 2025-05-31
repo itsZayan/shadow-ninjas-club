@@ -19,24 +19,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Ensure Vercel can properly build and serve the app
-  build: {
-    outDir: 'dist',
-    sourcemap: true,
-    // Reduce chunk size for better performance
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: [
-            '@/components/ui/button',
-            '@/components/ui/card',
-            '@/components/ui/input',
-            '@/components/ui/tabs',
-            '@/components/ui/toast',
-          ],
-        },
-      },
-    },
-  },
 }));

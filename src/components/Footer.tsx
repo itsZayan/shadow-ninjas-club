@@ -78,7 +78,7 @@ const Footer = () => {
           <div className="flex space-x-6 text-gray-400 font-noto text-sm">
             <Link to="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">Privacy Policy</Link>
             <Link to="/terms-of-service" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">Terms of Service</Link>
-            <Link to="/admin" className="hover:text-ninja-red transition-colors duration-300">Admin</Link>
+            <Link to="/admin" className="hover:tex-ninja-red transition-colors duration-300">Admin</Link>
             <a href="https://pakninjas.com/about-fs-ninja-academy/" target="_blank" rel="noopener noreferrer" className="hover:text-ninja-red transition-colors duration-300">
               F.S Ninja Academy
             </a>

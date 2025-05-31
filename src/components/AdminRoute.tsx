@@ -24,26 +24,6 @@ const AdminRoute = ({ children }: AdminRouteProps) => {
       localStorage.removeItem('isAdmin');
       localStorage.removeItem('adminLoginTime');
     }
-
-    // Set up a periodic check to ensure session remains valid
-    // This helps ensure consistent behavior on Vercel deployment
-    const checkInterval = setInterval(() => {
-      const currentIsAdmin = localStorage.getItem('isAdmin') === 'true';
-      const currentLoginTime = Number(localStorage.getItem('adminLoginTime') || '0');
-      const now = Date.now();
-      const currentSessionValid = now - currentLoginTime < 24 * 60 * 60 * 1000;
-      
-      if (!currentIsAdmin || !currentSessionValid) {
-        setIsAuthenticated(false);
-        
-        if (currentIsAdmin && !currentSessionValid) {
-          localStorage.removeItem('isAdmin');
-          localStorage.removeItem('adminLoginTime');
-        }
-      }
-    }, 60000); // Check every minute
-    
-    return () => clearInterval(checkInterval);
   }, []);
 
   // Show nothing while checking authentication
