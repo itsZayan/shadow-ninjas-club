@@ -15,14 +15,14 @@ const AdventuresSection = () => {
       title: "Summer Camp",
       description: "Fun outdoor activities combining adventure and recreation",
       features: ["Chill Camp Adventure", "Outdoor Activities", "Friendship Building", "Fun Games"],
-      season: "June/July 2025"
+      season: "June/July"
     },
     {
       icon: Compass,
       title: "Winter Warrior Camps",
       description: "Test your limits in challenging winter conditions",
       features: ["Cold Weather Training", "Mental Fortitude", "Team Challenges", "Hot Springs"],
-      season: "December 2025"
+      season: "December"
     },
     {
       icon: Award,
