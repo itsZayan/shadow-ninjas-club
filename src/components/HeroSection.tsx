@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,25 +8,21 @@ const HeroSection = () => {
   const [user, setUser] = useState<SupabaseUser | null>(null);
 
   useEffect(() => {
-    // Get current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
+      setUser(session?.user || null);
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
   const handleJoinNow = () => {
-    window.open('https://wa.me/923101870059', '_blank');
+    // Scroll to branches section
+    document.getElementById('branches')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleWatchVideos = () => {
-    window.open('https://www.youtube.com/@ShadowNinjasClub', '_blank');
+    // In the future, you could open a modal with training videos
+    window.open('https://pakninjas.com/about-fs-ninja-academy/', '_blank');
   };
 
   return (
@@ -45,23 +40,23 @@ const HeroSection = () => {
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full border border-ninja-red/30 bg-ninja-red/10 mb-6">
             <Zap className="w-4 h-4 text-ninja-red mr-2" />
-            <span className="text-ninja-red font-noto text-sm">Elite Ninja Training Academy</span>
+            <span className="text-ninja-red font-noto text-sm">Pakistan's Premier Ninjutsu Academy</span>
           </div>
 
-          {/* Main Headline */}
+          {/* Main Headline - SEO optimized */}
           <h1 className="font-orbitron font-black text-4xl md:text-7xl lg:text-8xl text-white mb-6 text-shadow">
             <span className="block">SHADOW</span>
             <span className="text-ninja-red block">NINJAS</span>
             <span className="block text-2xl md:text-4xl lg:text-5xl mt-2">Club</span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle - Keyword rich */}
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-noto leading-relaxed">
             Master the ancient arts of <span className="text-ninja-red font-bold">Ninjutsu</span>, 
-            <span className="text-ninja-red font-bold"> Judo</span>, and traditional weapons. 
-            Transform your body and mind through elite martial arts training.
+            <span className="text-ninja-red font-bold"> Judo</span>, and traditional weapons training
+            in Islamabad. Transform your body, mind, and spirit with authentic ninja techniques.
           </p>
-
+          
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button onClick={handleJoinNow} className="red-gradient hover:scale-105 transition-all duration-300 px-8 py-6 text-lg font-orbitron font-bold group">
@@ -69,8 +64,21 @@ const HeroSection = () => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button onClick={handleWatchVideos} variant="outline" className="border-ninja-red/50 text-white hover:bg-ninja-red/10 px-8 py-6 text-lg font-noto">
-              Watch Training Videos
+              Learn More About Us
             </Button>
+          </div>
+
+          {/* SEO-friendly location metadata */}
+          <div className="mt-8 flex items-center justify-center space-x-2 text-gray-400">
+            <span className="text-sm font-noto">Training locations:</span>
+            <span className="text-sm font-noto text-ninja-red">G-13</span>
+            <span className="text-sm">•</span>
+            <span className="text-sm font-noto text-ninja-red">I-14</span>
+            <span className="text-sm">•</span>
+            <span className="text-sm font-noto text-ninja-red">G-14</span>
+            <span className="text-sm">•</span>
+            <span className="text-sm font-noto text-ninja-red">D-12</span>
+            <span className="text-sm font-noto ml-2">Islamabad, Pakistan</span>
           </div>
 
           {/* Stats */}
@@ -84,7 +92,7 @@ const HeroSection = () => {
               <div className="text-gray-400 font-noto">Active Students</div>
             </div>
             <div className="text-center">
-              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">3</div>
+              <div className="font-orbitron font-bold text-3xl md:text-4xl text-ninja-red mb-2">4</div>
               <div className="text-gray-400 font-noto">Active Branches</div>
             </div>
           </div>
