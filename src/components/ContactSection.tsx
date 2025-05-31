@@ -30,7 +30,7 @@ const ContactSection = () => {
         subject: "New Contact Form Submission - Shadow Ninjas Club",
         from_name: "Shadow Ninjas Club Website",
         reply_to: formData.email,
-        to_email: "mughal.zayan@gmail.com,shadowartacademy@gmail.com", // Send to both emails (no spaces between emails)
+        to_email: "shadowartacademy@gmail.com", // Only sending to this email address
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
         phone: formData.phone,
