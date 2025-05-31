@@ -51,15 +51,15 @@ const ContactSection = () => {
       const data = await response.json();
 
       if (data.success) {
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          branch: '',
-          message: ''
-        });
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        branch: '',
+        message: ''
+      });
 
         toast({
           title: "Message sent successfully!",

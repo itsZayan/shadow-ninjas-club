@@ -15,6 +15,7 @@ const Header = () => {
     { name: 'Home', href: isHomePage ? '#hero' : '/' },
     { name: 'Training', href: isHomePage ? '#training' : '/#training' },
     { name: 'Adventures', href: isHomePage ? '#adventures' : '/#adventures' },
+    { name: 'Events', href: isHomePage ? '#events' : '/#events' },
     { name: 'Branches', href: isHomePage ? '#branches' : '/#branches' },
     { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' }
   ];
